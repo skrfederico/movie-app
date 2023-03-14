@@ -1,21 +1,7 @@
-import React from 'react'
+import { useController } from '../Controller'
 
-export function Form(props) {
-  const handleClick = () => {
-    const searchTerms = [
-      'Ant-man and the wasp: quantumania',
-      'Die Hard',
-      'Avatar 3',
-      'Cocaine Bear',
-    ]
-    searchTerms.forEach((searchTerm) => {
-      props.movieSearch(searchTerm)
-    })
-  }
+export function Form() {
+  const { handleClick } = useController()
 
-  return (
-    <div>
-      <button onClick={handleClick}>This week's flicks</button>
-    </div>
-  )
+  return <div></div>
 }
