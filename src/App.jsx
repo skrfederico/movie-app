@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-
 import { Form } from './components/Form'
 import { MovieDisplay } from './components/MovieDisplay'
 import { MoviePage } from './pages/MoviePage'
 const API_KEY = '3c76e4d5'
 
 function App() {
-  //State to hold movie data
   const [movies, setMovies] = useState([])
 
   const getMovie = async (searchTerm) => {
