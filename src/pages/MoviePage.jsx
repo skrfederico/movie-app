@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Reviews } from "./components/Reviews";
+import { Reviews } from "../components/Reviews";
 
 export function MoviePage() {
   const params = useParams();
