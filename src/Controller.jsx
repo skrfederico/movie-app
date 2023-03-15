@@ -71,6 +71,15 @@ function useHook() {
     }
   }
 
+  async function updateReview(id, review) {
+    try {
+      const results = await reviewService.updateReview(id, review)
+      return results
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async function deleteReview(id) {
     try {
       await reviewService.deleteReview(id)
@@ -89,7 +98,7 @@ function useHook() {
     const searchTerms = [
       'Ant-man and the wasp: quantumania',
       'Die Hard',
-      'Avatar 3',
+      'Avatar: The Way of Water',
       'Cocaine Bear',
     ]
     searchTerms.forEach((searchTerm) => {
@@ -105,8 +114,9 @@ function useHook() {
     setMovie,
     movie,
     createReview,
-    getAllReviews,
     reviews,
+    getAllReviews,
+    updateReview,
     setReviews,
     deleteReview,
   }

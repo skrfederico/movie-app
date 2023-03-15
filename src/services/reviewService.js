@@ -1,3 +1,4 @@
+import { logRoles } from '@testing-library/react'
 import axios from 'axios'
 
 class ReviewService {
@@ -32,6 +33,7 @@ class ReviewService {
     return await this.instance.post('/', {
       body: review.body,
       author: review.author,
+      movie: review.movieId,
     })
   }
 
@@ -40,7 +42,7 @@ class ReviewService {
   }
 
   async updateReview(id, review) {
-    return await this.instance.put('/', {
+    return await this.instance.put(`/${id}`, {
       body: review.body,
       author: review.author,
     })

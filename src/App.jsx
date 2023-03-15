@@ -5,8 +5,10 @@ import { ProvideController } from './Controller'
 
 function App() {
   return (
-    <div className="App">
-      <h1>DaMaFe movies</h1>
+    <div className="App w-full h-full ">
+      <h1 className="text-4xl font-bold text-center p-8 mb-16">
+        DaMaFe movies
+      </h1>
       <ProvideController>
         <Routes>
           <Route path="/" element={<LandingPage />} />

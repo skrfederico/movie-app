@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const reviewSchema = new mongoose.Schema({
   body: { type: String, required: true },
   author: { type: String, required: true },
+  movie: { type: String },
 })
 // console.log(reviewSchema.createdAt)
 // console.log('schema')
