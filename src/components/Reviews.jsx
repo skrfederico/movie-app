@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Reviews(props) {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState("");
   const [editReviewIndex, setEditReviewIndex] = useState(null);
   const [editReviewText, setEditReviewText] = useState("");
+  const [currentUser, setCurrentUser] = useState("user123"); //set the current user
 
   function handleAddReview(event) {
     event.preventDefault();
-    const newReviewObj = { text: newReview, likes: 0, dislikes: 0 };
+    const newReviewObj = {
+      text: newReview,
+      likes: 0,
+      dislikes: 0,
+      user: currentUser,
+    }; //add user property to new review
     setReviews([...reviews, newReviewObj]);
     setNewReview("");
   }
 
   function handleEditReview(index) {
-    setEditReviewIndex(index);
+    if (reviews[index].user === currentUser)
+      //check if current user is the creator of the review
+      setEditReviewIndex(index);
     setEditReviewText(reviews[index].text);
   }
 
@@ -39,6 +47,36 @@ function Reviews(props) {
     setReviews(updatedReviews);
   }
 
+  function handleDeleteReview(index) {
+    if (reviews[index].user === currentUser) {
+      //check if current user is the creator of the review
+      const updatedReviews = [...reviews];
+      updatedReviews.splice(index, 1);
+      setReviews(updatedReviews);
+    }
+  }
+
+  const handleBeforeUnload = (event) => {
+    event.preventDefault();
+    event.returnValue = "";
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    const storedReviews = JSON.parse(localStorage.getItem("reviews"));
+    if (storedReviews) {
+      setReviews(storedReviews);
+    }
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+  }, [reviews]);
+
   return (
     <div>
       <h2>Reviews</h2>
@@ -58,6 +96,9 @@ function Reviews(props) {
               <div>
                 <span>{review.text}</span>
                 <button onClick={() => handleEditReview(index)}>Edit</button>
+                <button onClick={() => handleDeleteReview(index)}>
+                  Delete
+                </button>
               </div>
             )}
             <div>
