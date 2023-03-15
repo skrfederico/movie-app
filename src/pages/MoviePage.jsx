@@ -1,65 +1,85 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Reviews } from "../components/Reviews";
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
+import { useController } from '../Controller'
+import ReviewForm from '../components/ReviewForm'
+import Review from '../components/Review'
 
 export function MoviePage() {
-  const params = useParams();
-  const id = params.id;
-  const [movie, setMovie] = useState(null);
-  const API_KEY = "8ec77365";
+  const {
+    getMoviePage,
+    movie,
+    setMovie,
+    createReview,
+    getAllReviews,
+    reviews,
+  } = useController()
 
-  async function getMovie(searchTerm) {
-    try {
-      const response = await fetch(
-        `https://www.omdbapi.com/?t=${searchTerm}&apikey=${API_KEY}`
-      );
-      const data = await response.json();
-      setMovie(data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const params = useParams()
+  const id = params.id
 
   useEffect(() => {
     async function grabMovie() {
-      await setMovie(getMovie(id));
+      await setMovie(getMoviePage(id))
     }
-    grabMovie();
-  }, []);
+    grabMovie()
+    getAllReviews()
+  }, [])
 
   console.log(movie);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      <div
-        style={{
-          border: "2px solid green",
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {movie && (
-          <>
-            <h1>{movie.Title}</h1>
-            <img src={movie.Poster} />
-          </>
-        )}
-      </div>
-      <div
-        style={{
-          border: "2px solid red",
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div>
-          <Reviews />
-        </div>
-      </div>
+    <div className="flex flex-col gap-12 mt-32 mr-64 ml-64 items-center">
+      {movie && (
+        <>
+          <div>
+            <div className="flex gap-12">
+              <img
+                className="object-cover h-3/6 min-w-min"
+                src={movie.Poster}
+              />
+              <div className="flex flex-col gap-6">
+                <h1 className="text-2xl font-semibold italic">{movie.Title}</h1>
+                <div className="flex gap-2 text-base">
+                  <h4 className="font-semibold">Actors:</h4>
+                  <p>{movie.Actors}</p>
+                </div>
+                <div className="flex gap-2 text-base">
+                  <h4 className="font-semibold">Director:</h4>
+                  <p>{movie.Director}</p>
+                </div>
+                <div className="flex gap-2 text-base">
+                  <h4 className="font-semibold">Genre:</h4>
+                  <p>{movie.Genre}</p>
+                </div>
+                <p className="italic text-lg">{movie.Plot}</p>
+                <div className="gap-2">
+                  <h4 className="font-semibold">Runtime:</h4>
+                  <p>{movie.Runtime}</p>
+                </div>
+
+                {movie?.Ratings?.map((rating, index) => (
+                  <div
+                    key={index}
+                    className="flex text-base border rounded p-2"
+                  >
+                    <div style={{ marginRight: '10px' }}>{rating.Source}</div>
+                    <div>{rating.Value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-semibold mb-8">Reviews</h2>
+            {reviews.map((review, i) => {
+              return <Review key={i} review={review} />
+            })}
+            <ReviewForm createReview={createReview} movieId={movie.imdbID} />
+          </div>
+        </>
+      )}
     </div>
   );
 }

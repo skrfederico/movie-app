@@ -21,11 +21,9 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params
   console.log('Received PUT request for Review with ID', id)
   try {
-    const updatedReview = await Review.findByIdAndUpdate(
-      id,
-      { $set: req.body },
-      { new: true }
-    )
+    const updatedReview = await Review.findByIdAndUpdate(id, req.body, {
+      new: true,
+    })
     console.log('Successfully updated review with ID', id)
     return res.json(updatedReview)
   } catch (error) {
@@ -66,4 +64,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error })
   }
 })
+
 module.exports = router
