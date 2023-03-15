@@ -1,8 +1,8 @@
-import { useController } from '../Controller'
-import { Link } from 'react-router-dom'
+import { useController } from "../Controller";
+import { Link } from "react-router-dom";
 
 export function MovieDisplay() {
-  const { movies } = useController()
+  const { movies } = useController();
   const Loaded = ({ movie }) => {
     return (
       <Link to={`/${movie.title}`}>
@@ -11,12 +11,12 @@ export function MovieDisplay() {
           <img src={movie.poster} alt={movie.title} />
         </div>
       </Link>
-    )
-  }
+    );
+  };
 
   const Loading = () => {
-    return <></>
-  }
+    return <></>;
+  };
 
   return (
     <div>
@@ -24,5 +24,5 @@ export function MovieDisplay() {
         <div key={index}>{movie ? <Loaded movie={movie} /> : <Loading />}</div>
       ))}
     </div>
-  )
+  );
 }
