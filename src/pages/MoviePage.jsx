@@ -1,61 +1,55 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { useController } from '../Controller'
+import ReviewForm from '../components/ReviewForm'
+import Review from '../components/Review'
+
 export function MoviePage() {
+  const {
+    getMoviePage,
+    movie,
+    setMovie,
+    createReview,
+    getAllReviews,
+    reviews,
+  } = useController()
   const params = useParams()
   const id = params.id
-  const [movie, setMovie] = useState(null)
-  const API_KEY = '8ec77365'
-
-  async function getMovie(searchTerm) {
-    try {
-      const response = await fetch(
-        `https://www.omdbapi.com/?t=${searchTerm}&apikey=${API_KEY}`
-      )
-      const data = await response.json()
-      setMovie(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
   useEffect(() => {
     async function grabMovie() {
-      await setMovie(getMovie(id))
+      await setMovie(getMoviePage(id))
     }
     grabMovie()
+    getAllReviews()
   }, [])
 
   console.log(movie)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <div
-        style={{
-          border: '2px solid green',
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <div>
+      <div>
         {movie && (
           <>
             <h1>{movie.Title}</h1>
+            <h4>Rated {movie.Rated}</h4>
+            <h4>{movie.Runtime}</h4>
+            <h4>{movie.Released}</h4>
+
             <img src={movie.Poster} />
+            <h4>{movie.Actors}</h4>
+            <h4>Box Office: {movie.BoxOffice}</h4>
+            <h4>{movie.Genre}</h4>
+            <p>{movie.Plot}</p>
           </>
         )}
       </div>
-      <div
-        style={{
-          border: '2px solid red',
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <h1>CRUD part with 'reviews'</h1>
+      <div>
+        <ReviewForm createReview={createReview} />
+        {reviews.map((review, i) => {
+          return <Review key={i} review={review} />
+        })}
       </div>
     </div>
   )
