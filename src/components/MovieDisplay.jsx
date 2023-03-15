@@ -1,8 +1,8 @@
-import { useController } from '../Controller'
-import { Link } from 'react-router-dom'
+import { useController } from "../Controller";
+import { Link } from "react-router-dom";
 
 export function MovieDisplay() {
-  const { movies } = useController()
+  const { movies } = useController();
   const Loaded = ({ movie }) => {
     return (
       <Link to={`/${movie.title}`}>
@@ -15,12 +15,12 @@ export function MovieDisplay() {
           />
         </div>
       </Link>
-    )
-  }
+    );
+  };
 
   const Loading = () => {
-    return <></>
-  }
+    return <></>;
+  };
 
   return (
     <div className="flex justify-evenly gap-8 items-center flex-wrap mr-64 ml-64 mb-64">
@@ -28,5 +28,5 @@ export function MovieDisplay() {
         <div key={index}>{movie ? <Loaded movie={movie} /> : <Loading />}</div>
       ))}
     </div>
-  )
+  );
 }
