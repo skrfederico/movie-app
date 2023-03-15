@@ -1,4 +1,3 @@
-import { logRoles } from '@testing-library/react'
 import axios from 'axios'
 
 class ReviewService {
@@ -17,7 +16,6 @@ class ReviewService {
   }
 
   handleResponse({ data }) {
-    console.log(data)
     return data
   }
 
@@ -29,11 +27,12 @@ class ReviewService {
     return await this.instance.get('/')
   }
 
-  async createReview(review) {
+  async createReview(review, movie) {
+    console.log(movie)
     return await this.instance.post('/', {
       body: review.body,
       author: review.author,
-      movie: review.movieId,
+      movie: movie,
     })
   }
 
