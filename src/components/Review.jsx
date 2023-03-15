@@ -10,6 +10,8 @@ export default function Review({ review }) {
     author: '',
   })
 
+  const [error, setError] = useState('')
+
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
@@ -24,14 +26,27 @@ export default function Review({ review }) {
       console.log(review)
       await updateReview(review._id, formData)
     } catch {
-      this.setState({ error: 'Editing Failed - Try Again' })
+      setError('Editing Failed - Try Again')
     }
     setEditing(false)
   }
 
   return (
     <>
-      <div className="flex items-center justify-between border rounded p-8 gap-4 mb-4">
+      <div className="flex flex-col justify-between border rounded p-8 gap-4 mb-4 w-full">
+        <div className="flex justify-between gap-4">
+          <p
+            className="cursor-pointer"
+            onClick={() => {
+              setEditing(!editing)
+            }}
+          >
+            Edit
+          </p>
+          <span className="cursor-pointer" onClick={handleDelete}>
+            &#10005;
+          </span>
+        </div>
         {editing ? (
           <form onSubmit={handleSubmit} className="flex flex-col mt-8">
             <div className="flex flex-col mb-4">
@@ -61,6 +76,7 @@ export default function Review({ review }) {
                 onChange={handleChange}
               />
             </div>
+            <p>&nbsp;{error}</p>
             <button
               className="text-white font-semibold text-lg bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               type="submit"
@@ -72,24 +88,10 @@ export default function Review({ review }) {
           <div className="flex flex-col">
             <p>{review.body}</p>
             <p className="self-end">
-              {' '}
-              {review.movie} - {review.author}
+              {review.movie} {review.author}
             </p>
           </div>
         )}
-        <div className="flex gap-4">
-          <p
-            className="cursor-pointer"
-            onClick={() => {
-              setEditing(!editing)
-            }}
-          >
-            Edit
-          </p>
-          <span className="cursor-pointer" onClick={handleDelete}>
-            &#10005;
-          </span>
-        </div>
       </div>
     </>
   )
