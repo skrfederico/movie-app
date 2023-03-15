@@ -88,7 +88,7 @@ export default function Review({ review }) {
           <div className="flex flex-col">
             <p>{review.body}</p>
             <p className="self-end">
-              {review.movie} {review.author}
+              {review.author}
             </p>
           </div>
         )}
