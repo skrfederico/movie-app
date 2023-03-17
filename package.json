@@ -24,7 +24,7 @@
   },
   "scripts": {
     "server": "nodemon server.js",
-    "start": "node server.js",
+    "start": "set PORT=3000 && react-scripts start",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

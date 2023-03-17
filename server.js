@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 //   res.json({ message: 'The API is alive!!!' })
 // })
 // app.use(require('./backend/config/checkToken'))
-// app.use('/api/users', require('./backend/routes/api/users'))
+app.use('/api/users', require('./backend/routes/api/users'))
 app.use('/api/reviews', require('./backend/controllers/reviewController'))
 
 // The following "catch all" route (note the *) is necessary
