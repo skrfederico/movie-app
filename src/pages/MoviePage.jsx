@@ -7,7 +7,7 @@ import Review from '../components/Review'
 
 import { moviePageClasses } from '../appClasses'
 
-export function MoviePage() {
+export function MoviePage({ user }) {
   const {
     getMoviePage,
     movie,
@@ -77,7 +77,7 @@ export function MoviePage() {
                 </>
               )}
             </div>
-            <ReviewForm createReview={createReview} movie={movie} />
+            <ReviewForm createReview={createReview} movie={movie} user={user} />
           </div>
         </>
       )}

@@ -53,9 +53,14 @@ function useHook() {
 
   const [reviews, setReviews] = useState([])
 
-  async function createReview(review, movie) {
+  async function createReview(review, movie, user) {
     try {
-      const newReview = await reviewService.createReview(review, movie)
+      console.log(user)
+      const newReview = await reviewService.createReview(
+        review,
+        movie,
+        user._id
+      )
       setReviews((oldReviews) => [...oldReviews, newReview])
       console.log(reviews)
     } catch (error) {
