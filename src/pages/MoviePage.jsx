@@ -5,6 +5,8 @@ import { useController } from '../Controller'
 import ReviewForm from '../components/ReviewForm'
 import Review from '../components/Review'
 
+import { moviePageClasses } from '../appClasses'
+
 export function MoviePage() {
   const {
     getMoviePage,
@@ -27,40 +29,34 @@ export function MoviePage() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-12 mt-32 mr-64 ml-64 items-center">
+    <div className={moviePageClasses.container}>
       {movie && (
         <>
-          <div>
-            <div className="flex gap-12">
-              <img
-                className="object-cover h-3/6 min-w-min"
-                src={movie.Poster}
-              />
-              <div className="flex flex-col gap-6">
-                <h1 className="text-2xl font-semibold italic">{movie.Title}</h1>
-                <div className="flex gap-2 text-base">
-                  <h4 className="font-semibold">Actors:</h4>
+          <div className={moviePageClasses.imageContainer}>
+            <div className={moviePageClasses.imageFlexContainer}>
+              <img className={moviePageClasses.image} src={movie.Poster} />
+              <div className="flex flex-col gap-6 ">
+                <h1 className={moviePageClasses.title}>{movie.Title}</h1>
+                <div className={moviePageClasses.div}>
+                  <h4 className="font-semibold ">Actors:</h4>
                   <p>{movie.Actors}</p>
                 </div>
-                <div className="flex gap-2 text-base">
+                <div className={moviePageClasses.div}>
                   <h4 className="font-semibold">Director:</h4>
                   <p>{movie.Director}</p>
                 </div>
-                <div className="flex gap-2 text-base">
+                <div className={moviePageClasses.div}>
                   <h4 className="font-semibold">Genre:</h4>
                   <p>{movie.Genre}</p>
                 </div>
-                <p className="italic text-lg">{movie.Plot}</p>
-                <div className="gap-2">
-                  <h4 className="font-semibold">Runtime:</h4>
+                <p className={moviePageClasses.plot}>{movie.Plot}</p>
+                <div className={moviePageClasses.plot}>
+                  <h4 className="font-semibold ">Runtime:</h4>
                   <p>{movie.Runtime}</p>
                 </div>
 
                 {movie?.Ratings?.map((rating, index) => (
-                  <div
-                    key={index}
-                    className="flex text-base border rounded p-2"
-                  >
+                  <div key={index} className={moviePageClasses.ratingContainer}>
                     <div style={{ marginRight: '10px' }}>{rating.Source}</div>
                     <div>{rating.Value}</div>
                   </div>
@@ -69,9 +65,9 @@ export function MoviePage() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col-reverse items-center w-full">
+          <h2 className={moviePageClasses.reviewTitle}>Reviews</h2>
+          <div className={moviePageClasses.reviewsContainer}>
+            <div className={moviePageClasses.reviewListContainer}>
               {reviews && reviews.length > 0 && (
                 <>
                   {reviews.map((review, i) => {

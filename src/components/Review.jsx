@@ -33,7 +33,7 @@ export default function Review({ review }) {
 
   return (
     <>
-      <div className="flex flex-col justify-between border rounded p-8 gap-4 mb-4 w-full">
+      <div className="flex flex-col justify-between border rounded border-slate-700 p-8 gap-4 mb-4 w-full sm:w-3/4 md:w-3/4 mx-auto">
         <div className="flex justify-between gap-4">
           <p
             className="cursor-pointer"
@@ -48,13 +48,16 @@ export default function Review({ review }) {
           </span>
         </div>
         {editing ? (
-          <form onSubmit={handleSubmit} className="flex flex-col mt-8">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col mt-8 sm:w-3/4 md:w-3/4 mx-auto"
+          >
             <div className="flex flex-col mb-4">
               <label className="font-semibold text-lg" htmlFor="body">
                 Edit Review
               </label>
               <textarea
-                className="border p-2"
+                className="border p-2 bg-slate-800 border-slate-700"
                 rows="5"
                 cols="100"
                 name="body"
@@ -70,7 +73,7 @@ export default function Review({ review }) {
               <input
                 type="text"
                 name="author"
-                className="border p-2"
+                className="border p-2 bg-slate-800 border-slate-700"
                 placeholder={review.author}
                 value={formData.author}
                 onChange={handleChange}
@@ -87,9 +90,7 @@ export default function Review({ review }) {
         ) : (
           <div className="flex flex-col">
             <p>{review.body}</p>
-            <p className="self-end">
-              {review.author}
-            </p>
+            <p className="self-end">{review.author}</p>
           </div>
         )}
       </div>
