@@ -31,6 +31,7 @@ function useHook() {
         title: data.Title,
         poster: data.Poster,
         id: data.imdbID,
+        rating: data.Rated,
       }
       setMovies((prevMovies) => [...prevMovies, newMovie])
     } catch (error) {
