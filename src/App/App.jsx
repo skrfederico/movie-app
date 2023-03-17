@@ -1,12 +1,19 @@
+import React, { useState } from 'react'
+
 import { Route, Routes } from 'react-router-dom'
+import { getUser } from '../services/usersService'
 import { MoviePage } from '../pages/MoviePage'
 import { LandingPage } from '../pages/LandingPage'
 import { ProvideController } from '../Controller'
 import { Link } from 'react-router-dom'
+import UserLogOut from '../components/UserLogout'
+
+import AuthPage from '../pages/AuthPage'
 
 import { appClasses } from '../appClasses'
 
 function App() {
+  const [user, setUser] = useState(getUser())
   return (
     <div className="App w-full h-full">
       <nav className={appClasses.nav}>
@@ -14,7 +21,7 @@ function App() {
           <Link to={`/`} className={appClasses.navLogo}>
             <img
               src="favicon-32x32.png"
-              class={appClasses.navLogoImg}
+              className={appClasses.navLogoImg}
               alt="DaMaFe Logo"
             />
             <span className={appClasses.navTitle}>DaMaFe</span>
@@ -34,17 +41,23 @@ function App() {
               <li></li>
             </ul>
           </div>
-          <button type="button" className={appClasses.navLogoutBtn}>
-            Log out
-          </button>
+          <UserLogOut />
         </div>
       </nav>
+
       <ProvideController>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/:id" element={<MoviePage />} />
-        </Routes>
+        {user ? (
+          <>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/:id" element={<MoviePage />} />
+            </Routes>
+          </>
+        ) : (
+          <AuthPage setUser={setUser} />
+        )}
       </ProvideController>
+
       <footer className={appClasses.footer}>
         <div className={appClasses.footerContainer}>
           <div className={appClasses.footerLogo}>
