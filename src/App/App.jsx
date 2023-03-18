@@ -49,8 +49,8 @@ function App() {
         {user ? (
           <>
             <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/:id" element={<MoviePage />} />
+              <Route path="/" element={<LandingPage user={user} />} />
+              <Route path="/:id" element={<MoviePage user={user} />} />
             </Routes>
           </>
         ) : (

@@ -34,7 +34,8 @@ router.put('/:id', async (req, res) => {
 // Create
 router.post('/', async (req, res) => {
   try {
-    const createdReview = await Review.create({ ...req.body })
+    const { body } = req
+    const createdReview = await Review.create({ ...body })
     return res.json(createdReview)
   } catch (error) {
     res.status(500).json({ error })

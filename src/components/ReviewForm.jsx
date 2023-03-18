@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useController } from '../Controller'
 
-export default function ReviewForm({ movie }) {
+export default function ReviewForm({ movie, user }) {
   const { createReview } = useController()
   const [formData, setFormData] = useState({
     body: '',
@@ -17,7 +17,7 @@ export default function ReviewForm({ movie }) {
   const handleSubmit = async (evt) => {
     evt.preventDefault()
     try {
-      await createReview(formData, movie.imdbID)
+      await createReview(formData, movie.imdbID, user)
       setFormData({
         body: '',
         author: '',
