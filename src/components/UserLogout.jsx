@@ -1,7 +1,7 @@
 import { logOut } from '../services/usersService'
 import { appClasses } from '../appClasses'
 
-export default function UserLogOut({ user, setUser }) {
+export default function UserLogOut({ setUser }) {
   function handleLogOut() {
     logOut()
     setUser(null)

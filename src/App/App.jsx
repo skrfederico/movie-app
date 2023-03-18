@@ -43,7 +43,7 @@ function App() {
                 <li></li>
               </ul>
             </div>
-            <UserLogOut />
+            <UserLogOut setUser={setUser} />
           </div>
         </nav>
       )}
