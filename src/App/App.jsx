@@ -16,7 +16,7 @@ import { appClasses } from '../appClasses'
 function App() {
   const [user, setUser] = useState(getUser())
   return (
-    <div className="App w-full h-full">
+    <div className="App">
       {user && (
         <nav className={appClasses.nav}>
           <div className={appClasses.navContainer}>
