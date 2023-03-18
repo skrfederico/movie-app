@@ -72,7 +72,7 @@ export function MoviePage({ user }) {
                 <>
                   {reviews.map((review, i) => {
                     if (review.movie === movie.imdbID)
-                      return <Review key={i} review={review} />
+                      return <Review key={i} review={review} user={user}/>
                   })}
                 </>
               )}
