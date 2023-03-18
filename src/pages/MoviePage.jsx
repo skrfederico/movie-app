@@ -50,17 +50,24 @@ export function MoviePage({ user }) {
                   <p>{movie.Genre}</p>
                 </div>
                 <p className={moviePageClasses.plot}>{movie.Plot}</p>
-                <div className={moviePageClasses.plot}>
+                <div className={moviePageClasses.div}>
                   <h4 className="font-semibold ">Runtime:</h4>
                   <p>{movie.Runtime}</p>
                 </div>
 
-                {movie?.Ratings?.map((rating, index) => (
-                  <div key={index} className={moviePageClasses.ratingContainer}>
-                    <div style={{ marginRight: '10px' }}>{rating.Source}</div>
-                    <div>{rating.Value}</div>
-                  </div>
-                ))}
+                <div className="flex flex-col my-16">
+                  {movie?.Ratings?.map((rating, index) => (
+                    <>
+                      <div
+                        key={index}
+                        className={moviePageClasses.ratingContainer}
+                      >
+                        <div className="font-semibold">{rating.Source}</div>
+                        <div>{rating.Value}</div>
+                      </div>
+                    </>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
