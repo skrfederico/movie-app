@@ -47,10 +47,12 @@ export default function Review({ reviews, review, user }) {
           >
             Edit
           </p>
-          )}   
+          )}
+          {user._id === review.user && (   
           <span className="cursor-pointer" onClick={handleDelete}>
             &#10005;
           </span>
+          )}
         </div>
         {editing ? (
           <form
