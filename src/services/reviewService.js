@@ -33,7 +33,7 @@ class ReviewService {
       body: review.body,
       author: review.author,
       movie: movie,
-      user: user,
+      user: user
     })
   }
 
@@ -41,10 +41,11 @@ class ReviewService {
     return await this.instance.delete(`/${id}`)
   }
 
-  async updateReview(id, review) {
+  async updateReview(id, review, user) {
     return await this.instance.put(`/${id}`, {
       body: review.body,
       author: review.author,
+      user: review.user
     })
   }
 }
