@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../services/usersService'
 import { MoviePage } from '../pages/MoviePage'
 import { LandingPage } from '../pages/LandingPage'
+import { UserReviewPage } from '../pages/UserReviewsPage'
 import { ProvideController } from '../Controller'
 import { Link } from 'react-router-dom'
 import UserLogOut from '../components/UserLogout'
@@ -34,9 +35,9 @@ function App() {
                 </Link>
               </li>
               <li>
-                <a href="#" className={appClasses.navListItem}>
+                <Link to={`/reviews`} className={appClasses.navListItem}>
                   Reviews
-                </a>
+                </Link>
               </li>
               <li></li>
             </ul>
@@ -51,6 +52,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage user={user} />} />
               <Route path="/:id" element={<MoviePage user={user} />} />
+              <Route path="/reviews" element={<UserReviewPage user={user} />} />
             </Routes>
           </>
         ) : (
@@ -76,9 +78,9 @@ function App() {
                 </Link>
               </li>
               <li>
-                <a href="#" className={appClasses.footerLink}>
+                <Link to={`/reviews`} className={appClasses.footerLink}>
                   Reviews
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className={appClasses.footerLink}>
