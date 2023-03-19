@@ -41,7 +41,22 @@ function App() {
                     Reviews
                   </Link>
                 </li>
-                <li></li>
+                {user.isAdmin && (
+                  <li>
+                    <Link
+                      to="/admin/edit"
+                      element={
+                        <AdminPage
+                          user={user}
+                          className={appClasses.navListItem}
+                        />
+                      }
+                      className={appClasses.navListItem}
+                    >
+                      Admin
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
             <UserLogOut setUser={setUser} />
