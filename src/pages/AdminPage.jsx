@@ -12,8 +12,7 @@ export default function AdminPage({}) {
     setInput(event.target.value)
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const handleSubmit = async () => {
     setIsLoading(true)
     await getMovie(input)
     setInput('')
@@ -37,7 +36,7 @@ export default function AdminPage({}) {
         value={input}
         onChange={handleInputChange}
         onKeyDown={(e) => {
-          e.key === 'Enter' && handleSubmit(e)
+          e.key === 'Enter' && handleSubmit()
         }}
       />
       <h4 className="text-2xl font-semibold text-slate-400">Current movies:</h4>
