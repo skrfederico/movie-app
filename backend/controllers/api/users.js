@@ -30,21 +30,21 @@ const dataController = {
       res.locals.data.token = createJWT(user)
       next()
     } catch (error) {
-      res.status(400).json('Bad Cedentials')
+      res.status(400).json('Bad Credentials')
     }
-  }
+  },
 }
 
 const apiController = {
   auth(req, res) {
     res.json(res.locals.data.token)
-  }
+  },
 }
 
 module.exports = {
   checkToken,
   dataController,
-  apiController
+  apiController,
 }
 
 /** Helper function */

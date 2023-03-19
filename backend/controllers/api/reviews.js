@@ -4,7 +4,7 @@ const router = express.Router()
 /**
  * Models
  */
-const Review = require('../models/reviews')
+const Review = require('../../models/reviews')
 
 // Read all
 router.get('/', async (req, res) => {

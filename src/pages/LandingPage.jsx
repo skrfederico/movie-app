@@ -2,12 +2,19 @@ import { MovieDisplay } from '../components/MovieDisplay'
 
 export function LandingPage() {
   return (
-    <div>
-      <div className="flex flex-col items-center gap-8 px-auto py-12 mx-auto max-w-screen-lg lg:px-32 md:px-16 lg:py-8 lg:my-16">
+    <>
+      <div className="absolute lg:pb-8 lg:mb-16 w-screen z-0">
+        <img
+          src="landing.jpg"
+          className=" w-full brightness-50 opacity-8 h-[800px] w-full  object-none"
+          alt=""
+        />
+      </div>
+      <div className="flex flex-col items-center justify-center gap-8 px-auto mx-auto w-screen max-w-screen-lg lg:px-32 md:px-16 my-auto lg:py-8 blur-none h-[800px] bg-black bg-opacity-30">
         <h2 className="text-3xl font-bold text-center">
           DaMaFe Premium Movie Reviews
         </h2>
-        <p className="text-slate-400 font-normal text-lg text-center">
+        <p className="font-normal text-lg text-center">
           Welcome to DaMaFe Movies, your ultimate destination for unbiased and
           insightful movie reviews! Our platform is dedicated to providing you
           with the most comprehensive and honest reviews on the latest
@@ -21,6 +28,6 @@ export function LandingPage() {
         </p>
       </div>
       <MovieDisplay />
-    </div>
+    </>
   )
 }
