@@ -57,15 +57,12 @@ export function MoviePage({ user }) {
 
                 <div className="flex flex-col my-16">
                   {movie?.Ratings?.map((rating, index) => (
-                    <>
-                      <div
-                        key={index}
-                        className={moviePageClasses.ratingContainer}
-                      >
+                    <div key={index}>
+                      <div className={moviePageClasses.ratingContainer}>
                         <div className="font-semibold">{rating.Source}</div>
                         <div>{rating.Value}</div>
                       </div>
-                    </>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -79,7 +76,7 @@ export function MoviePage({ user }) {
                 <>
                   {reviews.map((review, i) => {
                     if (review.movie === movie.imdbID)
-                      return <Review key={i} review={review} user={user}/>
+                      return <Review key={i} review={review} user={user} />
                   })}
                 </>
               )}

@@ -33,8 +33,11 @@ app.use((req, res, next) => {
 //   res.json({ message: 'The API is alive!!!' })
 // })
 app.use(require('./backend/config/checkToken'))
+
+const ensureLoggedIn = require('./backend/config/ensureLoggedIn')
 app.use('/api/users', require('./backend/routes/api/users'))
-app.use('/api/reviews', require('./backend/controllers/reviewController'))
+app.use('/api/reviews', require('./backend/controllers/api/reviews'))
+app.use('/api/movies', require('./backend/controllers/api/movies'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

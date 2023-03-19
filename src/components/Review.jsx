@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useController } from '../Controller'
 
-export default function Review({ reviews, review, user }) {
+export default function Review({ review, user }) {
   const { deleteReview, updateReview } = useController()
 
   const [editing, setEditing] = useState(false)
@@ -33,25 +33,24 @@ export default function Review({ reviews, review, user }) {
     setEditing(false)
   }
 
- 
   return (
     <>
       <div className="flex flex-col justify-between border rounded border-slate-700 p-8 gap-4 mb-4 w-full sm:w-3/4 md:w-3/4 mx-auto">
         <div className="flex justify-between gap-4">
-        {user._id  === review.user && (
-           <p
-            className="cursor-pointer"
-            onClick={() => {
-              setEditing(!editing)
-            }}
-          >
-            Edit
-          </p>
+          {user._id === review.user && (
+            <p
+              className="cursor-pointer"
+              onClick={() => {
+                setEditing(!editing)
+              }}
+            >
+              Edit
+            </p>
           )}
-          {user._id === review.user && (   
-          <span className="cursor-pointer" onClick={handleDelete}>
-            &#10005;
-          </span>
+          {user._id === review.user && (
+            <span className="cursor-pointer" onClick={handleDelete}>
+              &#10005;
+            </span>
           )}
         </div>
         {editing ? (

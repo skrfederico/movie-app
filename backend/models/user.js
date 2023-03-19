@@ -11,14 +11,18 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
       lowercase: true,
-      required: true
+      required: true,
     },
     password: {
       type: String,
       trim: true,
       minLength: 3,
-      required: true
-    }
+      required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
@@ -26,8 +30,8 @@ const userSchema = new Schema(
       transform(doc, ret) {
         delete ret.password
         return ret
-      }
-    }
+      },
+    },
   }
 )
 

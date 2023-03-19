@@ -21,7 +21,7 @@ export function UserReviewPage({ user }) {
               <>
                 {reviews.map((review, i) => {
                   if (review.user === user._id)
-                    return <Review key={i} review={review} />
+                    return <Review key={i} review={review} user={user} />
                 })}
               </>
             )}
