@@ -6,3 +6,27 @@ html {
   background-color: rgb(15 23 42);
   color: #fff;
 }
+
+.login2 {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.signup2 {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-page {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6doRn4-8wrr5kHaJmtPD-G05hNjbx9d0RAQ&usqp=CAU");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.signup-page {
+  background-image: url("https://www.osvnews.com/wp-content/uploads/2023/02/Film-photo-via-Canva-Pro-600x337.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* https://www.osvnews.com/wp-content/uploads/2023/02/Film-photo-via-Canva-Pro-600x337.png */
