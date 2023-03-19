@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import { useController } from '../Controller'
-
 export default function ListReview({ review }) {
   return (
     <div className="flex flex-col justify-between border rounded border-slate-700 p-8 gap-4 mb-4 w-full sm:w-3/4 md:w-3/4 mx-auto">
@@ -11,14 +8,21 @@ export default function ListReview({ review }) {
             <p className="self-end">{review.author}</p>
           </div>
         </div>
-        <div className="w-1/6 border border-slate-700">
-          <img src={review.moviePoster} alt="Movie poster" />
+        <div className="w-2/6 border border-slate-700">
+          <img
+            src={review.moviePoster}
+            alt="Movie poster"
+            style={{
+              width: '100%',
+              height: 'auto'
+              // maxHeight: 'calc(100% - 1px)'
+            }}
+          />
         </div>
       </div>
     </div>
   )
 }
-
 // import { useState, useEffect } from 'react'
 
 // export default function ListReview({ review }) {

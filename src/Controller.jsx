@@ -34,7 +34,6 @@ function useHook() {
         rating: data.Rated
       }
       setMovies((prevMovies) => [...prevMovies, newMovie])
-      localStorage.setItem('moviePoster', data.Poster) // Store the URL in local storage
     } catch (error) {
       console.error(error)
     }
@@ -46,6 +45,7 @@ function useHook() {
       )
       const data = await response.json()
       setMovie(data)
+      localStorage.setItem('moviePoster', data.Poster) // Store the URL in local storage
     } catch (error) {
       console.error(error)
     }
