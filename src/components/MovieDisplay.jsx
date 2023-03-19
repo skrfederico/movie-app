@@ -32,8 +32,8 @@ export function MovieDisplay() {
   }
 
   return (
-    <div className="mb-32">
-      <h3 className="pl-8 text-lg text-slate-400 font-medium">Our Picks</h3>
+    <div className="mb-32 mt-16">
+      <h3 className="pl-8 text-xl text-slate-400 font-medium">Our Picks</h3>
       <Swiper
         loop={true}
         slidesPerView={'auto'}

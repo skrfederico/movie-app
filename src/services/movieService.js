@@ -13,15 +13,15 @@ class MovieService {
   }
 
   // Create
-  // async getMovie({ title, poster, id, rating }) {
-  //   const { data } = await this.instance.post('/', {
-  //     title: title,
-  //     poster: poster,
-  //     id: id,
-  //     rating: rating,
-  //   })
-  //   return data
-  // }
+  async getMovie({ title, poster, id, rating }) {
+    const { data } = await this.instance.post('/', {
+      title: title,
+      poster: poster,
+      id: id,
+      rating: rating,
+    })
+    return data
+  }
 
   async deleteMovie(id) {
     return await this.instance.delete(`/${id}`)
