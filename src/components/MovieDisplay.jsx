@@ -18,7 +18,7 @@ export function MovieDisplay() {
             src={movie.poster}
             alt={movie.title}
           />
-          <div class="opacity-0 group-hover:opacity-100 group-hover:brightness-100 duration-300 absolute inset-0 z-10 flex flex-col justify-end items-start  px-8 py-24">
+          <div className="opacity-0 group-hover:opacity-100 group-hover:brightness-100 duration-300 absolute inset-0 z-10 flex flex-col justify-end items-start  px-8 py-24">
             <p className="text-2xl text-white font-semibold">{movie.title}</p>
             <p>({movie.rating})</p>
           </div>

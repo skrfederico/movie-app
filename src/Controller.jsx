@@ -31,14 +31,14 @@ function useHook() {
         title: data.Title,
         poster: data.Poster,
         id: data.imdbID,
-        rating: data.Rated,
+        rating: data.Rated
       }
       setMovies((prevMovies) => [...prevMovies, newMovie])
+      localStorage.setItem('moviePoster', data.Poster) // Store the URL in local storage
     } catch (error) {
       console.error(error)
     }
   }
-
   async function getMoviePage(searchTerm) {
     try {
       const response = await fetch(
@@ -55,9 +55,11 @@ function useHook() {
 
   async function createReview(review, movie, user) {
     try {
+      const moviePoster = localStorage.getItem('moviePoster') // Retrieve the URL from local storage
       const newReview = await reviewService.createReview(
         review,
         movie,
+        moviePoster, // Add the URL to the movie object
         user._id
       )
       console.log(newReview)
@@ -106,7 +108,7 @@ function useHook() {
       'Ant-man and the wasp: quantumania',
       'Die Hard',
       'Avatar: The Way of Water',
-      'Cocaine Bear',
+      'Cocaine Bear'
     ]
     searchTerms.forEach((searchTerm) => {
       getMovie(searchTerm)
@@ -125,6 +127,6 @@ function useHook() {
     getAllReviews,
     updateReview,
     setReviews,
-    deleteReview,
+    deleteReview
   }
 }
