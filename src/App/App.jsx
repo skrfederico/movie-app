@@ -7,6 +7,7 @@ import { LandingPage } from '../pages/LandingPage'
 import { UserReviewPage } from '../pages/UserReviewsPage'
 import { ProvideController } from '../Controller'
 import { Link } from 'react-router-dom'
+import AdminPage from '../pages/AdminPage'
 import UserLogOut from '../components/UserLogout'
 
 import AuthPage from '../pages/AuthPage'
@@ -40,7 +41,22 @@ function App() {
                     Reviews
                   </Link>
                 </li>
-                <li></li>
+                {user.isAdmin && (
+                  <li>
+                    <Link
+                      to="/admin/edit"
+                      element={
+                        <AdminPage
+                          user={user}
+                          className={appClasses.navListItem}
+                        />
+                      }
+                      className={appClasses.navListItem}
+                    >
+                      Admin
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
             <UserLogOut setUser={setUser} />
@@ -55,6 +71,9 @@ function App() {
               <Route path="/" element={<LandingPage user={user} />} />
               <Route path="/:id" element={<MoviePage user={user} />} />
               <Route path="/reviews" element={<UserReviewPage user={user} />} />
+              {user.isAdmin && (
+                <Route path="/admin/edit" element={<AdminPage user={user} />} />
+              )}
             </Routes>
           </>
         ) : (

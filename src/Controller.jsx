@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import reviewService from './services/reviewService'
 import { useLocation } from 'react-router-dom'
+import movieService from './services/movieService'
+
 const ControllerContext = createContext({})
 
 export function ProvideController({ children }) {
@@ -22,23 +24,6 @@ function useHook() {
 
   const API_KEY = '8ec77365'
 
-  async function getMovie(searchTerm) {
-    try {
-      const response = await fetch(
-        `https://www.omdbapi.com/?t=${searchTerm}&apikey=${API_KEY}`
-      )
-      const data = await response.json()
-      const newMovie = {
-        title: data.Title,
-        poster: data.Poster,
-        id: data.imdbID,
-        rating: data.Rated
-      }
-      setMovies((prevMovies) => [...prevMovies, newMovie])
-    } catch (error) {
-      console.error(error)
-    }
-  }
   async function getMoviePage(searchTerm) {
     try {
       const response = await fetch(
@@ -47,6 +32,67 @@ function useHook() {
       const data = await response.json()
       setMovie(data)
       localStorage.setItem('moviePoster', data.Poster) // Store the URL in local storage
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // Create
+  async function getMovie(searchTerm) {
+    try {
+      const response = await fetch(
+        `https://www.omdbapi.com/?t=${searchTerm}&apikey=${API_KEY}`
+      )
+      const data = await response.json()
+      const newMovie = await movieService.getMovie({
+        title: data.Title,
+        poster: data.Poster,
+        id: data.imdbID,
+        rating: data.Rated,
+      })
+      setMovies((oldMovies) => [...oldMovies, newMovie])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getAllMovies() {
+    try {
+      const results = await movieService.getAllMovies()
+      setMovies([...results])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function updateMovie(_id, searchTerm) {
+    try {
+      const response = await fetch(
+        `https://www.omdbapi.com/?t=${searchTerm}&apikey=${API_KEY}`
+      )
+      const data = await response.json()
+      const updatedMovie = await movieService.getMovie({
+        title: data.Title,
+        poster: data.Poster,
+        id: data.imdbID,
+        rating: data.Rated,
+      })
+      const results = movieService.updateMovie(_id, updatedMovie)
+      return results
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function deleteMovie(id) {
+    try {
+      await movieService.deleteMovie(id)
+      const indexToRemove = movies.findIndex((movie) => movie._id === id)
+      if (indexToRemove) {
+        const moviesCopy = [...movies]
+        moviesCopy.splice(indexToRemove, 1)
+        setMovies([...moviesCopy])
+      }
     } catch (error) {
       console.error(error)
     }
@@ -108,21 +154,19 @@ function useHook() {
   }
 
   useEffect(() => {
-    const searchTerms = [
-      'Ant-man and the wasp: quantumania',
-      'Die Hard',
-      'Avatar: The Way of Water',
-      'Cocaine Bear'
-    ]
-    searchTerms.forEach((searchTerm) => {
-      getMovie(searchTerm)
-    })
+    async function fetchMovies() {
+      await getAllMovies()
+    }
+    fetchMovies()
   }, [])
 
   return {
     movies,
     setMovies,
     getMovie,
+    getAllMovies,
+    updateMovie,
+    deleteMovie,
     getMoviePage,
     setMovie,
     movie,

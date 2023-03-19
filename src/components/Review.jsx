@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useController } from '../Controller'
 
-export default function Review({ reviews, review, user }) {
+export default function Review({ review, user }) {
   const { deleteReview, updateReview } = useController()
 
   const [editing, setEditing] = useState(false)
