@@ -37,7 +37,7 @@ export default function AdminPage({}) {
         value={input}
         onChange={handleInputChange}
         onKeyDown={(e) => {
-          e.key === 'Enter' && handleSubmit()
+          e.key === 'Enter' && handleSubmit(e)
         }}
       />
       <h4 className="text-2xl font-semibold text-slate-400">Current movies:</h4>
