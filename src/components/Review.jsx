@@ -6,10 +6,9 @@ export default function Review({ review, user }) {
 
   const [editing, setEditing] = useState(false)
   const [formData, setFormData] = useState({
-    body: '',
-    author: '',
+    body: review.body,
+    author: review.author
   })
-
   const [error, setError] = useState('')
 
   function handleChange(evt) {
@@ -26,7 +25,7 @@ export default function Review({ review, user }) {
       console.log(review)
       console.log(review.user)
       console.log(user._id)
-      await updateReview(review._id, user, formData)
+      await updateReview(review._id, formData, user)
     } catch {
       setError('Editing Failed - Try Again')
     }

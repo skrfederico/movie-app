@@ -27,13 +27,16 @@ class ReviewService {
     return await this.instance.get('/')
   }
 
-  async createReview(review, movie, user) {
+  async createReview(review, movie, moviePoster, user, moviePageLink) {
     console.log(user)
+    console.log(moviePoster)
     return await this.instance.post('/', {
       body: review.body,
       author: review.author,
       movie: movie,
-      user: user
+      moviePoster: moviePoster,
+      user: user,
+      moviePageLink: moviePageLink
     })
   }
 

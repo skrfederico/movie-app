@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import reviewService from './services/reviewService'
+import { useLocation } from 'react-router-dom'
 import movieService from './services/movieService'
+
 const ControllerContext = createContext({})
 
 export function ProvideController({ children }) {
@@ -29,6 +31,7 @@ function useHook() {
       )
       const data = await response.json()
       setMovie(data)
+      localStorage.setItem('moviePoster', data.Poster) // Store the URL in local storage
     } catch (error) {
       console.error(error)
     }
@@ -96,13 +99,18 @@ function useHook() {
   }
 
   const [reviews, setReviews] = useState([])
+  const location = useLocation()
+  const moviePageLink = location.pathname
 
   async function createReview(review, movie, user) {
     try {
+      const moviePoster = localStorage.getItem('moviePoster') // Retrieve the URL from local storage
       const newReview = await reviewService.createReview(
         review,
         movie,
-        user._id
+        moviePoster, // Add the URL to the movie object
+        user._id,
+        moviePageLink
       )
       console.log(newReview)
       console.log(user._id)
@@ -168,5 +176,6 @@ function useHook() {
     updateReview,
     setReviews,
     deleteReview,
+    moviePageLink
   }
 }

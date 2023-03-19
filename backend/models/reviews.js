@@ -6,6 +6,8 @@ const reviewSchema = new mongoose.Schema({
   author: { type: String, required: true },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   movie: { type: String },
+  moviePoster: { type: String },
+  moviePageLink: { type: String }
 })
 // console.log(reviewSchema.createdAt)
 // console.log('schema')
