@@ -38,7 +38,7 @@ export default function Review({ review, user }) {
         <div className="flex justify-between gap-4">
           {user._id === review.user && (
             <p
-              className="cursor-pointer"
+              className="cursor-pointer bg-gray-700 rounded-sm px-2 py-1"
               onClick={() => {
                 setEditing(!editing)
               }}
@@ -47,7 +47,10 @@ export default function Review({ review, user }) {
             </p>
           )}
           {user._id === review.user && (
-            <span className="cursor-pointer" onClick={handleDelete}>
+            <span
+              className="cursor-pointer bg-gray-700 rounded-sm px-2 py-1"
+              onClick={handleDelete}
+            >
               &#10005;
             </span>
           )}
@@ -94,8 +97,8 @@ export default function Review({ review, user }) {
           </form>
         ) : (
           <div className="flex flex-col">
-            <p>{review.body}</p>
-            <p className="self-end">{review.author}</p>
+            <p className="text-lg">{review.body}</p>
+            <p className="self-end italic">{review.author}</p>
           </div>
         )}
       </div>

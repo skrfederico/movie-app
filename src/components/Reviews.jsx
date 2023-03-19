@@ -1,81 +1,81 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
 function Reviews(props) {
-  const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState("");
-  const [editReviewIndex, setEditReviewIndex] = useState(null);
-  const [editReviewText, setEditReviewText] = useState("");
-  const [currentUser, setCurrentUser] = useState("user123"); //set the current user
+  const [reviews, setReviews] = useState([])
+  const [newReview, setNewReview] = useState('')
+  const [editReviewIndex, setEditReviewIndex] = useState(null)
+  const [editReviewText, setEditReviewText] = useState('')
+  const [currentUser, setCurrentUser] = useState('user123') //set the current user
 
   function handleAddReview(event) {
-    event.preventDefault();
+    event.preventDefault()
     const newReviewObj = {
       text: newReview,
       likes: 0,
       dislikes: 0,
-      user: currentUser,
-    }; //add user property to new review
-    setReviews([...reviews, newReviewObj]);
-    setNewReview("");
+      user: currentUser
+    } //add user property to new review
+    setReviews([...reviews, newReviewObj])
+    setNewReview('')
   }
 
   function handleEditReview(index) {
     if (reviews[index].user === currentUser)
       //check if current user is the creator of the review
-      setEditReviewIndex(index);
-    setEditReviewText(reviews[index].text);
+      setEditReviewIndex(index)
+    setEditReviewText(reviews[index].text)
   }
 
   function handleUpdateReview(event) {
-    event.preventDefault();
-    const updatedReviews = [...reviews];
-    updatedReviews[editReviewIndex].text = editReviewText;
-    setReviews(updatedReviews);
-    setEditReviewIndex(null);
-    setEditReviewText("");
+    event.preventDefault()
+    const updatedReviews = [...reviews]
+    updatedReviews[editReviewIndex].text = editReviewText
+    setReviews(updatedReviews)
+    setEditReviewIndex(null)
+    setEditReviewText('')
   }
 
   function handleLikeReview(index) {
-    const updatedReviews = [...reviews];
-    updatedReviews[index].likes++;
-    setReviews(updatedReviews);
+    const updatedReviews = [...reviews]
+    updatedReviews[index].likes++
+    setReviews(updatedReviews)
   }
 
   function handleDislikeReview(index) {
-    const updatedReviews = [...reviews];
-    updatedReviews[index].dislikes++;
-    setReviews(updatedReviews);
+    const updatedReviews = [...reviews]
+    updatedReviews[index].dislikes++
+    setReviews(updatedReviews)
   }
 
   function handleDeleteReview(index) {
     if (reviews[index].user === currentUser) {
       //check if current user is the creator of the review
-      const updatedReviews = [...reviews];
-      updatedReviews.splice(index, 1);
-      setReviews(updatedReviews);
+      const updatedReviews = [...reviews]
+      updatedReviews.splice(index, 1)
+      setReviews(updatedReviews)
     }
   }
 
   const handleBeforeUnload = (event) => {
-    event.preventDefault();
-    event.returnValue = "";
-  };
+    event.preventDefault()
+    event.returnValue = ''
+  }
 
   useEffect(() => {
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener('beforeunload', handleBeforeUnload)
 
-    const storedReviews = JSON.parse(localStorage.getItem("reviews"));
+    const storedReviews = JSON.parse(localStorage.getItem('reviews'))
     if (storedReviews) {
-      setReviews(storedReviews);
+      setReviews(storedReviews)
     }
     return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [])
 
   useEffect(() => {
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-  }, [reviews]);
+    localStorage.setItem('reviews', JSON.stringify(reviews))
+  }, [reviews])
 
   return (
     <div>
@@ -94,10 +94,19 @@ function Reviews(props) {
               </form>
             ) : (
               <div>
-                <span>{review.text}</span>
-                <button onClick={() => handleEditReview(index)}>Edit</button>
-                <button onClick={() => handleDeleteReview(index)}>
-                  Delete
+                <button
+                  className="bg-gray-200 border border-gray-300 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                  onClick={() => {
+                    setEditing(true)
+                  }}
+                >
+                  <FiEdit size={20} />
+                </button>
+                <button
+                  className="bg-gray-200 border border-gray-300 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                  onClick={handleDelete}
+                >
+                  <FiTrash2 size={20} />
                 </button>
               </div>
             )}
@@ -126,7 +135,7 @@ function Reviews(props) {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export { Reviews };
+export { Reviews }
