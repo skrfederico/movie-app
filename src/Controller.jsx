@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import reviewService from './services/reviewService'
+import { useLocation } from 'react-router-dom'
 const ControllerContext = createContext({})
 
 export function ProvideController({ children }) {
@@ -52,6 +53,8 @@ function useHook() {
   }
 
   const [reviews, setReviews] = useState([])
+  const location = useLocation()
+  const moviePageLink = location.pathname
 
   async function createReview(review, movie, user) {
     try {
@@ -60,7 +63,8 @@ function useHook() {
         review,
         movie,
         moviePoster, // Add the URL to the movie object
-        user._id
+        user._id,
+        moviePageLink
       )
       console.log(newReview)
       console.log(user._id)
@@ -127,6 +131,7 @@ function useHook() {
     getAllReviews,
     updateReview,
     setReviews,
-    deleteReview
+    deleteReview,
+    moviePageLink
   }
 }

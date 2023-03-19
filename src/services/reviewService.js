@@ -27,7 +27,7 @@ class ReviewService {
     return await this.instance.get('/')
   }
 
-  async createReview(review, movie, moviePoster, user) {
+  async createReview(review, movie, moviePoster, user, moviePageLink) {
     console.log(user)
     console.log(moviePoster)
     return await this.instance.post('/', {
@@ -35,7 +35,8 @@ class ReviewService {
       author: review.author,
       movie: movie,
       moviePoster: moviePoster,
-      user: user
+      user: user,
+      moviePageLink: moviePageLink
     })
   }
 
