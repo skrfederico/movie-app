@@ -26,16 +26,6 @@ class MovieService {
   async deleteMovie(id) {
     return await this.instance.delete(`/${id}`)
   }
-
-  // async updateMovie(_id, updatedMovie) {
-  //   const { data } = await this.instance.put(`/${_id}`, {
-  //     title: updatedMovie.title,
-  //     poster: updatedMovie.poster,
-  //     id: updatedMovie.id,
-  //     rating: updatedMovie.rating,
-  //   })
-  //   return data
-  // }
 }
 
 const movieService = new MovieService()
