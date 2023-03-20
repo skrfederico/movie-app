@@ -1,67 +1,65 @@
-# ## DaMaFe Movie Reviews
+# DaMaFe Movie Reviews
 
 ## Introduction
 
-Dawn, Matthew and Fede have acquired a movie theater and they are showcasing all the lessons learnt in unit 3 with a MERN stack application that allows different users to create, read, update and delete reviews in a web app using react.
+DaMaFe movie theater, owned by Dawn, Matthew, and Fede, is an online movie review platform that enables users to create, read, update, and delete movie reviews using a MERN stack application with React. The platform is built with technologies such as MongoDB, Express, TailWind, JavaScript, brcryptjs, and JSX.
 
 ## Description (EXTRA)
 
-DaMaFe movie theater invites their guests to leave a review after watching one of the four movies they are screening right now.
+DaMaFe movie theater provides a platform for movie enthusiasts to share their experiences with others by leaving reviews. Currently, the platform is showcasing four movies, and after watching any of the movies, users are invited to leave a review.
 
 ## Getting started
 
-- https://plogger.herokuapp.com/
-- sign up if you are a new user or use your existing name and password.
+To start using the platform, visit [https://plogger.herokuapp.com/](https://plogger.herokuapp.com/) and sign up if you are a new user or use your existing name and password.
 
 ## Technologies Used
 
-- MongoDB
-- express
-- JSX
-- JavaScript
-- TailWind
-- brcryptjs
-- express-session
-- jsx-view-engine
-- Morgan
-- react
+The following technologies were used in building DaMaFe movie theater:
+
+- MongoDB: Used to store the application data.
+- Express: Used to handle HTTP requests and routes.
+- JSX: Used as the view engine to generate HTML markup with JavaScript.
+- JavaScript: Used for programming and building the application logic.
+- TailWind: Used for the application's responsive design and styling.
+- brcryptjs: Used for user password encryption and decryption.
+- express-session: Used for handling user sessions.
+- Morgan: Used for logging HTTP requests and responses.
+- React: Used for building the frontend interface.
+- OMDb API - Used to grab movie information from a search term.
 
 ## Background info (EXTRA)
 
-The creation of this app was inspired by the fruits app modeled for students of SEIR Flex at GA and my personal experience managing a school of languages in Buenos Aires, Argentina.
+The inspiration behind the creation of this application was drawn from the fruits app modeled for students of SEIR Flex at GA and Dawn, Matthew, and Fede's personal experience in managing a school of languages in Buenos Aires, Argentina.
 
 ## Features (EXTRA)
 
-- Landing Page
+DaMaFe movie theater has the following features:
 
-  - The main page displays 4 movie posters and their titles in a smooth caroussel
-
-- Movie Page
-
-  - Each movie page is divided in two divs, the top one fetchs information from an API and displays a card with detailed information about the selected movie. The bottom div displays all the reviews written about that movie and only allows authors to delete or edit their own reviews.
-
-- Nav bar
-
-  - A header navigation bar with links to the main page, and a list of reviews
+- Landing Page: The platform's main page displays chosen movie posters and their titles in a smooth carousel.
+- Movie Page: Each movie page is divided into two sections. The top section fetches information from the Open Movie Database (OMDB) API and displays a card with detailed information about the selected movie. The bottom section displays all the reviews written about that movie and only allows authors to delete or edit their own reviews.
+- Nav bar: A header navigation bar with links to the main page and a list of all reviews the user has made.
 
 ## Screenshots
 
-[LandingPage Top]
-<a href="https://imgur.com/QwXfOhY"><img src="https://imgur.com/QwXfOhY.png" title="source: imgur.com" /></a>
+### LandingPage Top
 
-[LandingPage Bottom]
-<a href="https://imgur.com/u2aexP4"><img src="https://imgur.com/u2aexP4.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/QwXfOhY"><img src="https://imgur.com/QwXfOhY.png" title="source: imgur.com"  /></a>
 
-[MoviePage top]
-<a href="https://imgur.com/l4UFAlr"><img src="https://imgur.com/l4UFAlr.png" title="source: imgur.com" /></a>
+### LandingPage Bottom
 
-[MoviePage button]
-<a href="https://imgur.com/gobJUyZ"><img src="  
-https://imgur.com/gobJUyZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/u2aexP4"><img src="https://imgur.com/u2aexP4.png" title="source: imgur.com"  /></a>
 
-[Reviews by user]
-<a href="https://imgur.com/v6DpLMD"><img src="  
-https://imgur.com/v6DpLMD.png" title="source: imgur.com" /></a>
+### MoviePage top
+
+<a href="https://imgur.com/l4UFAlr"><img src="https://imgur.com/l4UFAlr.png" title="source: imgur.com"  /></a>
+
+### MoviePage button
+
+<a href="https://imgur.com/gobJUyZ"><img src="https://imgur.com/gobJUyZ.png" title="source: imgur.com"  /></a>
+
+### Reviews by Users
+
+<a href="https://imgur.com/v6DpLMD"><img src="https://imgur.com/v6DpLMD.png" title="source: imgur.com"  /></a>
 
 ## Future Enhancements (Ice Box Features)
 
@@ -69,11 +67,13 @@ https://imgur.com/v6DpLMD.png" title="source: imgur.com" /></a>
 
 ## Wire Frame and ERD
 
-ERD
-<a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com" /></a>
+### Entity Relationship Diagram
 
-wireframe
-<a href="https://imgur.com/uHBO8LZ"><img src="https://i.imgur.com/uHBO8LZ.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com"  /></a>
+
+### Wireframe
+
+<a href="https://imgur.com/uHBO8LZ"><img src="https://i.imgur.com/uHBO8LZ.png" title="source: imgur.com"  /></a>
 
 ## Restful routes table ( NOT REQUIRED)
 

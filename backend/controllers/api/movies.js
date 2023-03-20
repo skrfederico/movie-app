@@ -13,17 +13,6 @@ router.get('/', async (req, res) => {
   }
 })
 
-// // Update
-// router.put('/:id', async (req, res) => {
-//   const { id } = req.params
-//   try {
-//     const updatedMovie = await Movie.findByIdAndUpdate(id, { ...req.body })
-//     return res.json(updatedMovie)
-//   } catch (error) {
-//     res.status(500).json({ error })
-//   }
-// })
-
 // Create
 router.post('/', async (req, res) => {
   try {

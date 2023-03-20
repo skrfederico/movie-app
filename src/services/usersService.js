@@ -1,9 +1,6 @@
 import * as usersAPI from './usersApi'
 
 export async function signUp(userData) {
-  // Delete the network request code to the
-  // users-api.js module which will ultimately
-  // return the JWT
   const token = await usersAPI.signUp(userData)
   // Persist the token to localStorage
   localStorage.setItem('token', token)

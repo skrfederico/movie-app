@@ -1,5 +1,4 @@
 import { logOut } from '../services/usersService'
-import { appClasses } from '../appClasses'
 
 export default function UserLogOut({ setUser }) {
   function handleLogOut() {
@@ -8,7 +7,10 @@ export default function UserLogOut({ setUser }) {
   }
 
   return (
-    <button className={appClasses.navLogoutBtn} onClick={handleLogOut}>
+    <button
+      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
+      onClick={handleLogOut}
+    >
       LOG OUT
     </button>
   )
