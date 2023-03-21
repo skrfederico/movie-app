@@ -10,7 +10,7 @@ DaMaFe movie theater provides a platform for movie enthusiasts to share their ex
 
 ## Getting started
 
-To start using the platform, visit [https://plogger.herokuapp.com/](https://plogger.herokuapp.com/) and sign up if you are a new user or use your existing name and password.
+To start using the platform, visit [https://damafe.herokuapp.com/](https://damafe.herokuapp.com/) and sign up if you are a new user or use your existing name and password.
 
 ## Technologies Used
 
@@ -29,7 +29,7 @@ The following technologies were used in building DaMaFe movie theater:
 
 ## Background info (EXTRA)
 
-The inspiration behind the creation of this application was drawn from the fruits app modeled for students of SEIR Flex at GA and Dawn, Matthew, and Fede's personal experience in managing a school of languages in Buenos Aires, Argentina.
+The inspiration behind the creation of this application was drawn from the notes app modeled for students of SEIR Flex at GA and Dawn, Matthew, and Fede's personal experience.
 
 ## Features (EXTRA)
 
@@ -64,25 +64,20 @@ DaMaFe movie theater has the following features:
 ## Future Enhancements (Ice Box Features)
 
 - Community - accesing a list of all the users registered and seeing their comments. Contacting them and interacting with other movie fans.
+- Admin: can delete any comment
+- Thumbs up/down icons with counter
+- Display all reviews from all users
 
 ## Wire Frame and ERD
 
 ### Entity Relationship Diagram
 
-<a href="https://imgur.com/LLnwMlk"><img src="https://i.imgur.com/LLnwMlk.png" title="source: imgur.com"  /></a>
+<a href="https://imgur.com/Y3mLfBq"><img src="https://imgur.com/Y3mLfBq.png" title="source: imgur.com" /></a>
 
-### Wireframe
+## Wire Frame
 
-<a href="https://imgur.com/uHBO8LZ"><img src="https://i.imgur.com/uHBO8LZ.png" title="source: imgur.com"  /></a>
+<a href="  
+https://imgur.com/fw3vumB"><img src="  
+https://imgur.com/fw3vumB.png" title="source: imgur.com" /></a>
 
-## Restful routes table ( NOT REQUIRED)
-
-|       URL       | HTTP VERB | Mongoose model function |
-| :-------------: | --------: | ----------------------: |
-|     /plogs/     |       GET |                   .find |
-|   /plogs/new    |       GET |                     N/A |
-|     /plogs      |      POST |                 .create |
-|   /plogs/:id    |       GET |               .findById |
-| /plogs/:id/edit |       GET |               .findById |
-|   /plogs/:id    |       PUT |      .findByIdAndUpdate |
-|   /plogs/:id    |    DELETE |      .findByIdAndDelete |
+https://trello.com/b/PVyhmH67/project-3
