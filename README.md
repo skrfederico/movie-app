@@ -90,9 +90,7 @@ DaMaFe movie theater has the following features:
 
 ### Wire Frame
 
-<a href="  
-https://imgur.com/fw3vumB"><img src="  
-https://imgur.com/fw3vumB.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/fw3vumB"><img src="https://i.imgur.com/fw3vumB.png" title="source: imgur.com" /></a>
 
 ### Trello Board
 
